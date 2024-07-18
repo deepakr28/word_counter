@@ -8,8 +8,8 @@ class TrieService:
     def insert_word(self, word):
         """
 
-        :param word:
-        :return:
+        :param word: Word to insert in Trie
+        :return: None
         """
         node = self.root
         for c in word.lower():
@@ -23,8 +23,8 @@ class TrieService:
     def search_word(self, word):
         """
 
-        :param word:
-        :return:
+        :param word: Word to search in Trie
+        :return: True if word exists else False
         """
         node = self.root
         for c in word.lower():
@@ -34,3 +34,4 @@ class TrieService:
 
         if node.is_word:
             return True
+

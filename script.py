@@ -3,7 +3,7 @@ from service.TrieService import TrieService
 from tabulate import tabulate
 
 TABLE_HEADERS = ["Predefined Word", "Match Count"]
-
+SPECTIAL_CHARS = '.,?#'
 
 class WordCounter:
     def __init__(self, content_file, pre_defined_file):
@@ -15,16 +15,24 @@ class WordCounter:
     def process_pre_defined_file(self):
         try:
             with open(self.pre_defined_word_file, "r") as f1:
-                for line in f1:
-                    self.trie_service.insert_word(line.strip())
+                for word in f1:
+                    word = word.strip()
+                    word = self.remove_special_chars(word)
+                    if len(word) > 0:
+                        self.trie_service.insert_word(word)
+                        self.result_dict[word] = 0
         except Exception as e:
             print(f"Unable to read content file: {self.pre_defined_word_file}")
             raise e
+
+    def remove_special_chars(self, word):
+        return word.rstrip(SPECTIAL_CHARS)
 
     def read_content_file(self):
         with open(self.content_file, "r") as f2:
             for line in f2:
                 for word in line.strip().split():
+                    word = self.remove_special_chars(word)
                     try:
                         if self.trie_service.search_word(word):
                             word_count = self.result_dict.get(word, 0) + 1
