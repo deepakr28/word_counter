@@ -18,6 +18,8 @@ After pipenv shell command following command should be executed in virtual env
 
 ## Sample Run
 python3 script.py -c content_file -p predefined_words
+
+
 content_file contains about 30000 lines of text
 
 Predefined Word | Match Count 
