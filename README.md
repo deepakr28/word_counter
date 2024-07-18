@@ -35,3 +35,4 @@ amen | 1
 1. Any special character at the end of the word should be discarded
 2. If any word which is present in predefined list but not present is content is shows as 0
 3. If there is any special character in predefined list then it is ignored
+4. Search in case-insensitive however result is case-insensitive
