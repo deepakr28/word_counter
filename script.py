@@ -13,6 +13,10 @@ class WordCounter:
         self.pre_defined_word_file = pre_defined_file
 
     def process_pre_defined_file(self):
+        """
+        This function reads predefined list of words and calls TrieService to insert word into Trie
+        :return: None
+        """
         try:
             with open(self.pre_defined_word_file, "r") as f1:
                 for word in f1:
@@ -29,6 +33,10 @@ class WordCounter:
         return word.rstrip(SPECTIAL_CHARS)
 
     def read_content_file(self):
+        """
+        This function reads content file and search word into Trie
+        :return:
+        """
         with open(self.content_file, "r") as f2:
             for line in f2:
                 for word in line.strip().split():
